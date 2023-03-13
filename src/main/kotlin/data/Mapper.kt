@@ -21,20 +21,32 @@ class Mapper(private val dataSource: BeautySalonDataSource) {
         )
     }
 
-    fun toClientDto(client: Client): ClientDto {
-
-    }
+    fun toClientDto(client: Client) = ClientDto(
+        id = client.id,
+        age = client.age,
+        name = client.name,
+    )
 
     fun toClient(client: ClientDto): Client {
-
+        return Client(
+            id = client.id,
+            age = client.age,
+            name = client.name
+        )
     }
 
-    fun toEmployeeDto(employee: Employee): EmployeeDto {
-
-    }
+    fun toEmployeeDto(employee: Employee) = EmployeeDto(
+        id = employee.id,
+        skills = employee.skills,
+        name = employee.name
+    )
 
     fun toEmployee(employee: EmployeeDto): Employee {
-
+        return Employee(
+            id = employee.id,
+            skills = employee.skills,
+            name = employee.name
+        )
     }
 
     private fun toServiceDto(service: Service) = ServiceDto(
