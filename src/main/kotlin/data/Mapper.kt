@@ -1,9 +1,6 @@
 package data
 
-import domain.Client
-import domain.Employee
-import domain.Order
-import domain.Service
+import domain.*
 
 class Mapper(private val dataSource: BeautySalonDataSource) {
     fun toOrderDto(order: Order) = OrderDto(
@@ -13,10 +10,10 @@ class Mapper(private val dataSource: BeautySalonDataSource) {
     )
 
     fun toOrder(order: OrderDto): Order {
-        val current = dataSource.getClients().first { it.id == order.clientId }
+        val current2 = dataSource.getClients().first { it.id == order.clientId }
         return Order(
             id = order.id,
-            client = toClient(current),
+            client = toClient(current2),
             services = order.services.map { toService(it) }
         )
     }
@@ -37,14 +34,14 @@ class Mapper(private val dataSource: BeautySalonDataSource) {
 
     fun toEmployeeDto(employee: Employee) = EmployeeDto(
         id = employee.id,
-        skills = employee.skills,
+        skills = listOf<Skills>(),
         name = employee.name
     )
 
     fun toEmployee(employee: EmployeeDto): Employee {
         return Employee(
             id = employee.id,
-            skills = employee.skills,
+            skills = employee.,
             name = employee.name
         )
     }
