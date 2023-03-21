@@ -1,3 +1,6 @@
-fun main(args: Array<String>) {
+import domain.BeautySalonRepository
+import domain.GetAllPriceUseCase
+
+fun main() {
 
 }

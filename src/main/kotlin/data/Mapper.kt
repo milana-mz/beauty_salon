@@ -34,14 +34,14 @@ class Mapper(private val dataSource: BeautySalonDataSource) {
 
     fun toEmployeeDto(employee: Employee) = EmployeeDto(
         id = employee.id,
-        skills = listOf<Skills>(),
+        skills = employee.skills,
         name = employee.name
     )
 
     fun toEmployee(employee: EmployeeDto): Employee {
         return Employee(
             id = employee.id,
-            skills = employee.,
+            skills = employee.skills,
             name = employee.name
         )
     }

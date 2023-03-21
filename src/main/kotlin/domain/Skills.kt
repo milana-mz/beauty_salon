@@ -6,10 +6,4 @@ enum class Skills (val title: String){
     EYERBOWS ("Бровист"),
     MAKEUPARTIST ("Визажист");
 
-    companion object {
-        fun from(source: String): Skills {
-            return values().firstOrNull { it.name == source } ?: HAIRDRESSER
-        }
-    }
-
 }
