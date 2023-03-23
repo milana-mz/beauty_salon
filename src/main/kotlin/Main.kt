@@ -9,24 +9,39 @@ import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
 import java.io.InputStream
+import com.opencsv.CSVReader
+import com.opencsv.CSVReaderBuilder
+import data.ClientDto
 
-fun readCsv(inputStream: InputStream): List<Client> {
-    val reader = inputStream.bufferedReader()
-    val header = reader.readLine()
-    return reader.lineSequence()
-            .filter { it.isNotBlank() }
-            .map {
-                val (id, name, age) = it.split(',', ignoreCase = false, limit = 3)
-                Client(id.trim().toInt(), name.trim().removeSurrounding("\""), age.trim().toInt())
-            }.toList()
-}
+//fun readClientsFromCsv(filePath: String): List<ClientDto> {
+//    val reader = CSVReaderBuilder(FileReader(filePath)).build()
+//    val clients = mutableListOf<ClientDto>()
+//    var record: Array<String>
+//    while (reader.readNext().also { record = it } != null) {
+//        clients.add(ClientDto.fromCsvRecord(record))
+//    }
+//    return clients
+//}
+
 fun main() {
-//    val adapter = DI.createBeautySalonAdapter()
-//    val dataSource = BeautySalonDataSourceImpl()
-//    println(adapter.getAllPrice())
-//    println(dataSource.csv())
-    val file = "clients.csv"
-    val movies = readCsv(File (file).inputStream())
-    movies.forEach{ println(it) }
+    val adapter = DI.createBeautySalonAdapter()
+    val dataSource = BeautySalonDataSourceImpl()
+    val service =
+    println(adapter.getAllPrice())
+    println(adapter.getServiceCost(service))
+
+//    val reader = FileReader("client.csv") // путь к файлу CSV
+//    val csvReader = CSVReaderBuilder(reader).withSkipLines(1).build() // создаем объект CSVReader с пропуском заголовков
+//
+//    var record: Array<String>?
+//    while (csvReader.readNext().also { record = it } != null) { // читаем каждую строку CSV
+//        val column1 = record!![0] // первая колонка
+//        val column2 = record!![1] // вторая колонка
+//
+//        // использование данных
+//        println("$column1, $column2")
+//    }
+//
+//    csvReader.close()
 
 }

@@ -13,9 +13,9 @@ class BeautySalonAdater(
             ALL_PRICE, arrayOf(getAllPriceUseCase.get())
     )
 
-//    fun getServiceCost(list: List<Service>) = stringFormatter.format(
-//            SERVICES_COST, arrayOf(getCostOfServicesByEmployee.get())
-//    )
+    fun getServiceCost(services: List<Service>) = stringFormatter.format(
+            SERVICES_COST, arrayOf(getCostOfServicesByEmployee.calculateServicesCostByEmployee(services))
+    )
 
     companion object {
         private const val ALL_PRICE = "Общая стоимость оказанных услуг %d"
