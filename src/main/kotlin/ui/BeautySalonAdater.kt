@@ -1,13 +1,21 @@
 package ui
 
 import domain.GetAllPriceUseCase
+<<<<<<< HEAD
 import domain.GetCostOfServicesByEmployeeUseCase
+=======
+import domain.GetCostOfServicesByEmployee
+>>>>>>> origin/test
 import domain.Service
 
 class BeautySalonAdater(
         private val getAllPriceUseCase: GetAllPriceUseCase,
         private val stringFormatter: StringFormatter,
+<<<<<<< HEAD
         private val getCostOfServicesByEmployee: GetCostOfServicesByEmployeeUseCase
+=======
+        private val getCostOfServicesByEmployee: GetCostOfServicesByEmployee
+>>>>>>> origin/test
 ) {
     fun getAllPrice() = stringFormatter.format(
             ALL_PRICE, arrayOf(getAllPriceUseCase.get())
