@@ -1,6 +1,15 @@
 package data
 
 import domain.Skills
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
+import java.io.InputStream
+import java.nio.file.Paths
+
+/*
+* на входе будет CsvParser со списком от списка полей
+* */
 
 class BeautySalonDataSourceImpl: BeautySalonDataSource {
     override fun getClients(): List<ClientDto> = listOf(
@@ -14,7 +23,7 @@ class BeautySalonDataSourceImpl: BeautySalonDataSource {
     )
 
     override fun getOrders(): List<OrderDto> = listOf(
-        OrderDto(1, 1, listOf(ServiceDto(1, 1, Skills.HAIRDRESSER, 250)))
+        OrderDto(1, 1, listOf(ServiceDto(1, 1, Skills.EYERBOWS, 250), ServiceDto(2,2,Skills.HAIRDRESSER, 450)))
     )
 
 }

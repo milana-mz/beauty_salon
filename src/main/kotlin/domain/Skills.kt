@@ -7,3 +7,7 @@ enum class Skills (val title: String){
     MAKEUPARTIST ("Визажист");
 
 }
+
+/*
+* допистаь метод который по тайтлу выдает Skills
+* */
