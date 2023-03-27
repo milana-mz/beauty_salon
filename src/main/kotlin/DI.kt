@@ -22,7 +22,6 @@ object DI {
     fun createBeautySalonAdapter() = BeautySalonAdater(
             getAllPriceUseCase = createGetAllPriceUseCase(),
             stringFormatter = createStringFormatter(),
-            getCostOfServicesByEmployee = createGetCostOfServicesByEmployee()
-
+            getCostOfServicesByEmployeeUseCase = createGetCostOfServicesByEmployee()
     )
 }

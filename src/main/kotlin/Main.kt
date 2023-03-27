@@ -1,9 +1,3 @@
-import data.BeautySalonDataSource
-import data.BeautySalonDataSourceImpl
-import domain.BeautySalonRepository
-import domain.Client
-import domain.GetAllPriceUseCase
-import domain.Service
 import ui.BeautySalonAdater
 import java.io.BufferedReader
 import java.io.File
@@ -11,26 +5,39 @@ import java.io.FileReader
 import java.io.InputStream
 import com.opencsv.CSVReader
 import com.opencsv.CSVReaderBuilder
-import data.ClientDto
+import data.*
+import domain.*
 
 fun main() {
     val adapter = DI.createBeautySalonAdapter()
-    val dataSource = BeautySalonDataSourceImpl()
-    val service =
+    val service = listOf<Service>()
     println(adapter.getAllPrice())
     println(adapter.getServiceCost(service))
+    val filename = "C:\\Users\\molova.mz\\Documents\\beauty\\src\\main\\kotlin\\client.csv"
+//    val content = File(filename).readText()
+//    content.split(",")
+//    val lines = content.split(";")
+//    println(content)
+//    println(lines)
 
-//    val reader = FileReader("client.csv")
-//    val csvReader = CSVReaderBuilder(reader).withSkipLines(1).build()
-//
-//    var record: Array<String>?
-//    while (csvReader.readNext().also { record = it } != null) {
-//        val column1 = record!![0]
-//        val column2 = record!![1]
-//
-//        println("$column1, $column2")
-//    }
-//
-//    csvReader.close()
+    val file = File(filename)
+
+    val people = mutableListOf<Client>()
+
+    file.bufferedReader().use { reader ->
+        // Читаем каждую строку файла
+        var line: String?
+        while (reader.readLine().also { line = it } != null) {
+            // Разбиваем строку на отдельные поля
+            val fields = line!!.split(";")
+
+            // Создаем объект класса Person и добавляем его в список
+            val person = Client(fields[0].toInt(), fields[1], fields[2].toInt())
+            people.add(person)
+        }
+    }
+
+    // Выводим список людей
+    println(people)
 
 }
